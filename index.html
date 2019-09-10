@@ -116,7 +116,7 @@ RandomKey.idx=0;
 		采样率: <input type="text" class="sample" value="16000" style="width:60px"> hz，越大细节越丰富
 	</div>
 	<div class="pd btns">
-		<button onclick="recopen()">打开录音1</button>
+		<button onclick="recopen()">打开录音2</button>
 		<button onclick="recclose()">关闭录音</button>
 	</div>
 	<div class="pd btns">
@@ -314,6 +314,7 @@ function shagnchuan(blob){
 	$.ajax({
 		url:api //上传接口地址
 		,type:"POST"
+		,data:{}
 		,dataType:"json"
 		,async: false
 		,contentType:false //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
