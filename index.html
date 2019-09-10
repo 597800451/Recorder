@@ -314,6 +314,7 @@ function shagnchuan(blob){
 	$.ajax({
 		url:api //上传接口地址
 		,type:"POST"
+		,dataType:"json"
 		,contentType:false //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
 		,processData:false //不要处理data，让xhr自动处理
 		,data:form
