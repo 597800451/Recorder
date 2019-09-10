@@ -116,7 +116,7 @@ RandomKey.idx=0;
 		采样率: <input type="text" class="sample" value="16000" style="width:60px"> hz，越大细节越丰富
 	</div>
 	<div class="pd btns">
-		<button onclick="recopen()">打开录音2</button>
+		<button onclick="recopen()">打开录音3</button>
 		<button onclick="recclose()">关闭录音</button>
 	</div>
 	<div class="pd btns">
@@ -301,7 +301,7 @@ var dialogCancel=function(){
 function aaaa(){
 	var TestApi="https://oldman.mynatapp.cc/hello"
 	$.ajax({
-		url:api //上传接口地址
+		url:TestApi //上传接口地址
 		,type:"GET"
 		,success:function(v){
 			console.log("上传成功",v);
