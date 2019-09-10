@@ -298,6 +298,43 @@ var dialogCancel=function(){
 };
 //弹框End
 
+function shagnchuan(blob){
+	var TestApi="http://nk5hsa.natappfree.cc/wav-test";//用来在控制台network中能看到请求数据，测试的请求结果无关紧要
+
+	//-----↓↓↓以下才是主要代码↓↓↓-------
+
+	//本例子假设使用jQuery封装的请求方式，实际使用中自行调整为自己的请求方式
+	//录音结束时拿到了blob文件对象，可以用FileReader读取出内容，或者用FormData上传
+	var api=TestApi;
+
+	/***方式二：使用FormData用multipart/form-data表单上传文件***/
+	var form=new FormData();
+	form.append("file",blob,"recorder.wav"); //和普通form表单并无二致，后端接收到upfile参数的文件，文件名为recorder.mp3
+	//...其他表单参数
+	$.ajax({
+		url:api //上传接口地址
+		,type:"POST"
+		,contentType:false //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
+		,processData:false //不要处理data，让xhr自动处理
+		,data:form
+		,success:function(v){
+			console.log("上传成功",v);
+		}
+		,error:function(s){
+			console.error("上传失败",s);
+		}
+	});
+}
+
+function updateFile(key){
+	var o=recblob[key];
+	if(o){
+		var cls=RandomKey(16);
+		var name="rec-"+o.time+"ms-"+o.set.bitRate+"kbps-"+o.set.sampleRate+"hz."+o.set.type;
+		alert(name)
+		shagnchuan(o)
+	};
+}
 
 function recclose(){
 	if(rec){
@@ -359,7 +396,7 @@ function recstopFn(call,isClick,endCall,rec){
 			
 			var id=RandomKey(16);
 			recblob[id]={blob:blob,set:$.extend({},rec.set),time:time};
-			reclog((tag||"已录制")+":"+intp(rec.set.bitRate,3)+"kbps "+intp(rec.set.sampleRate,5)+"hz 花"+intp(Date.now()-t1,4)+"ms编码"+intp(blob.size,6)+"b ["+rec.set.type+"]"+intp(time,6)+'ms <button onclick="recdown(\''+id+'\')">下载</button> <button onclick="recplay(\''+id+'\')">播放</button> <span class="p'+id+'"></span> <span class="d'+id+'"></span>');
+			reclog((tag||"已录制")+":"+intp(rec.set.bitRate,3)+"kbps "+intp(rec.set.sampleRate,5)+"hz 花"+intp(Date.now()-t1,4)+"ms编码"+intp(blob.size,6)+"b ["+rec.set.type+"]"+intp(time,6)+'ms <button onclick="recdown(\''+id+'\')">下载</button> <button onclick="recplay(\''+id+'\')">播放</button><button onclick="updateFile(\''+id+'\')">上传</button> <span class="p'+id+'"></span> <span class="d'+id+'"></span>');
 			
 			call(null,{data:blob,duration:time});
 		},function(s){
