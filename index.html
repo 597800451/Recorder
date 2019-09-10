@@ -298,6 +298,20 @@ var dialogCancel=function(){
 };
 //弹框End
 
+function aaaa(){
+	var TestApi="https://oldman.mynatapp.cc/hello"
+	$.ajax({
+		url:api //上传接口地址
+		,type:"GET"
+		,success:function(v){
+			console.log("上传成功",v);
+		}
+		,error:function(s){
+			console.error("上传失败",s);
+		}
+	});
+}
+	
 function shagnchuan(blob){
 	var TestApi="https://oldman.mynatapp.cc/wav-test";//用来在控制台network中能看到请求数据，测试的请求结果无关紧要
 
@@ -404,7 +418,7 @@ function recstopFn(call,isClick,endCall,rec){
 			
 			var id=RandomKey(16);
 			recblob[id]={blob:blob,set:$.extend({},rec.set),time:time};
-			reclog((tag||"已录制")+":"+intp(rec.set.bitRate,3)+"kbps "+intp(rec.set.sampleRate,5)+"hz 花"+intp(Date.now()-t1,4)+"ms编码"+intp(blob.size,6)+"b ["+rec.set.type+"]"+intp(time,6)+'ms <button onclick="recdown(\''+id+'\')">下载</button> <button onclick="recplay(\''+id+'\')">播放</button><button onclick="updateFile(\''+id+'\')">上传</button> <span class="p'+id+'"></span> <span class="d'+id+'"></span>');
+			reclog((tag||"已录制")+":"+intp(rec.set.bitRate,3)+"kbps "+intp(rec.set.sampleRate,5)+"hz 花"+intp(Date.now()-t1,4)+"ms编码"+intp(blob.size,6)+"b ["+rec.set.type+"]"+intp(time,6)+'ms <button onclick="recdown(\''+id+'\')">下载</button> <button onclick="recplay(\''+id+'\')">播放</button><button onclick="updateFile(\''+id+'\')">上传</button> <button onclick="aaaa()">ttt</button><span class="p'+id+'"></span> <span class="d'+id+'"></span>');
 			
 			call(null,{data:blob,duration:time});
 		},function(s){
