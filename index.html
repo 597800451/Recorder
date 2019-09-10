@@ -319,10 +319,10 @@ function shagnchuan(blob){
 		,processData:false //不要处理data，让xhr自动处理
 		,data:form
 		,success:function(v){
-			console.log("上传成功",v);
+			reclog("上传成功",v);
 		}
 		,error:function(s){
-			console.error("上传失败",s);
+			reclog("上传失败",s);
 		}
 	});
 }
