@@ -299,7 +299,6 @@ var dialogCancel=function(){
 //弹框End
 
 function shagnchuan(blob){
-	alert(blob)
 	var TestApi="https://oldman.mynatapp.cc/wav-test";//用来在控制台network中能看到请求数据，测试的请求结果无关紧要
 
 	//-----↓↓↓以下才是主要代码↓↓↓-------
@@ -319,7 +318,7 @@ function shagnchuan(blob){
 		,processData:false //不要处理data，让xhr自动处理
 		,data:form
 		,success:function(v){
-			reclog("上传成功",v);
+			reclog(v);
 		}
 		,error:function(s){
 			reclog("上传失败",s);
