@@ -324,6 +324,10 @@ function shagnchuan(blob){
 			reclog("上传失败",s);
 			reclog(JSON.stringify(s));
 		}
+		,complete(e,v){
+			reclog(JSON.stringify(e));
+			reclog(JSON.stringify(v));
+		}
 	});
 }
 
