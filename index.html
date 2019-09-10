@@ -316,6 +316,7 @@ function shagnchuan(blob){
 		,type:"POST"
 		,contentType:false //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
 		,processData:false //不要处理data，让xhr自动处理
+		,dataType:"text"
 		,data:form
 		,success:function(v){
 			reclog(v);
