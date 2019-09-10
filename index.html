@@ -332,7 +332,7 @@ function updateFile(key){
 	if(o){
 		var cls=RandomKey(16);
 		var name="rec-"+o.time+"ms-"+o.set.bitRate+"kbps-"+o.set.sampleRate+"hz."+o.set.type;
-		alert(name)
+		reclog(JSON.stringify(o));
 		shagnchuan(o.blob)
 	};
 }
